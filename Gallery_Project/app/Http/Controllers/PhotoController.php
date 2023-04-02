@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Photos;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -39,25 +40,33 @@ class PhotoController extends Controller
     }
     
     public function update(Request $request, $id)
-{
-    $photo = Photos::findOrFail($id);
+    {
+        $photo = Photos::findOrFail($id);
+        $photo->title = $request->input('title');
+        $photo->description = $request->input('description');
 
-    $photo->title = $request->input('title');
-    $photo->description = $request->input('description');
+        if ($request->hasFile('imagem')) {
+            Storage::delete($photo->image);
+            $path = $request->file('imagem')->store('public/photos');
+            $photo->image = $path;
+        }
 
-    if ($request->hasFile('imagem')) {
-        // Deletar a imagem antiga
-        Storage::delete($photo->image);
-
-        // Salvar a nova imagem
-        $path = $request->file('imagem')->store('public/photos');
-        $photo->image = $path;
+        $photo->save();
+        return redirect()->route('index');
     }
 
-    $photo->save();
+    public function delete($id)
+    {
+        $photo = Photos::findOrFail($id);
+    
+        Storage::delete($photo->image);
+    
+        $photo->delete();
+    
+        return redirect()->route('index');
+    }
+    
 
-    return redirect()->route('index');
-}
 
 
 }

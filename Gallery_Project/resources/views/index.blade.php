@@ -40,7 +40,7 @@
                             <a href="{{ route('photo.edit', $photo->id) }}"><button class="btn btn-primary">Editar</button></a>
                         </div>
                         <div class="col-6">
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#dropmodal">Apagar</button>
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Apagar</button>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
     </div>
     
 
-    <!-- Modal Inserção -->
+<!-- Modal Inserção -->
 <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarFotoLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -92,6 +92,32 @@
   </div>
 </div>
 
+<!-- Modal Delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="modalDeletarFotoLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalDeletarFotoLabel">Deletar Foto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Tem certeza que deseja apagar a foto?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+          <form action="{{ route('delete', $photo->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Sim</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
 <script>
     const inputImagem = document.querySelector('#imagem');
     const imagemPreview = document.querySelector('#imagem-preview');
@@ -106,19 +132,12 @@
         reader.readAsDataURL(file);
       }
     });
-
-    //
-
     $(document).ready(function() {
-    // Escuta a mudança no valor do campo de imagem
-    $('#imagem').on('change', function() {
-        // Remove a classe "d-none" do form-group
-        $('.form-group').removeClass('d-none');
+        $('#imagem').on('change', function() {
+            $('.form-group').removeClass('d-none');
+        });
     });
-});
-
-    
-  </script>
+</script>
 
     
    
