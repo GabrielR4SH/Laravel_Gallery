@@ -15,6 +15,9 @@ use App\Http\Controllers\PhotoController;
 |
 */
 
-Route::get('/', [PhotoController::class, 'index']);
+Route::get('/', [PhotoController::class, 'index'])->name('index');
 
 Route::post('/store', [PhotoController::class, 'store'])->name('store');
+Route::get('/edit/{photo}', [PhotoController::class, 'edit'])->name('photo.edit');
+
+Route::put('/update/{photo}', [PhotoController::class, 'update'])->name('update');

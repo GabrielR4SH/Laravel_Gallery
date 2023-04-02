@@ -13,7 +13,7 @@
 </head>
 <body>
     <nav class="navbar navbar-light bg-light justify-content-between fixed-top">
-        <a class="navbar-brand">Navbar</a>
+        <img src="logo.png" width="120" >
         <form class="form-inline mx-auto">
             <input class="form-control mr-sm-2" type="search" placeholder="Digite um titulo" aria-label="Search">
 
@@ -34,6 +34,15 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $photo->title }}</h5>
                     <p class="card-text">{{ $photo->description }}</p>
+                    <hr>
+                    <div class="row">
+                        <div class="col-3">
+                            <a href="{{ route('photo.edit', $photo->id) }}"><button class="btn btn-primary">Editar</button></a>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#dropmodal">Apagar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,8 +90,9 @@
       </div>
     </div>
   </div>
-  
-  <script>
+</div>
+
+<script>
     const inputImagem = document.querySelector('#imagem');
     const imagemPreview = document.querySelector('#imagem-preview');
   
@@ -109,15 +119,9 @@
 
     
   </script>
-  
-  
-  
-  
-  
-  
-  
 
     
    
+
 </body>
 </html>
