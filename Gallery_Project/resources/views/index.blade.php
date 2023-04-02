@@ -57,7 +57,7 @@
     </div>
     
 
-    <!-- Modal Inserção -->
+<!-- Modal Inserção -->
 <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarFotoLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -97,6 +97,7 @@
   </div>
 </div>
 
+
 <script>
     const inputImagem = document.querySelector('#imagem');
     const imagemPreview = document.querySelector('#imagem-preview');
@@ -111,19 +112,12 @@
         reader.readAsDataURL(file);
       }
     });
-
-    //
-
     $(document).ready(function() {
-    // Escuta a mudança no valor do campo de imagem
-    $('#imagem').on('change', function() {
-        // Remove a classe "d-none" do form-group
-        $('.form-group').removeClass('d-none');
+        $('#imagem').on('change', function() {
+            $('.form-group').removeClass('d-none');
+        });
     });
-});
-
-    
-  </script>
+</script>
 
     
    

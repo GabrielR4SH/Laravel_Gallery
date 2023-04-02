@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Photos;
 use Illuminate\Support\Facades\Storage;
 
-
 class PhotoController extends Controller
 {
     public function index()
