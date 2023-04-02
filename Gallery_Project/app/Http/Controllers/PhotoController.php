@@ -49,9 +49,9 @@ class PhotoController extends Controller
         $photo->description = $request->input('description');
 
         if ($request->hasFile('imagem')) {
-        // Deletar a imagem antiga
+        
         Storage::delete($photo->image);
-        // Salvar a nova imagem
+        
         }
         $path = $request->file('imagem')->store('public/photos');
         $photo->image = $path;
