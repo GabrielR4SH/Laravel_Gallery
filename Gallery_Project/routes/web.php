@@ -17,4 +17,4 @@ use App\Http\Controllers\PhotoController;
 
 Route::get('/', [PhotoController::class, 'index']);
 
-
+Route::post('/store', [PhotoController::class, 'store'])->name('store');
