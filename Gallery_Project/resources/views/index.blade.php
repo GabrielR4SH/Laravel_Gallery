@@ -39,8 +39,13 @@
                         <div class="col-3">
                             <a href="{{ route('photo.edit', $photo->id) }}"><button class="btn btn-primary">Editar</button></a>
                         </div>
-                        <div class="col-6">
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#dropmodal">Apagar</button>
+                        <div class="col-6">  
+                          <form action="{{ route('photo.delete', $photo->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Apagar</button>
+                        </form>
+                                                  
                         </div>
                     </div>
                 </div>
