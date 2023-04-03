@@ -12,14 +12,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light justify-content-between fixed-top">
-        <img src="logo.png" width="120" >
-        <form class="form-inline mx-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Digite um titulo" aria-label="Search">
-
-            <button class="btn btn-outline-success my-2  mr-sm-2" type="submit">Abrir a Foto</button>
-          </form>
-      </nav>
+  <nav class="navbar navbar-light bg-light justify-content-between fixed-top">
+    <img src="logo.png" width="120" class="mx-auto">
+  </nav>
+  
     
     <div class="container">
         <br><br>

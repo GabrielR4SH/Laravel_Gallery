@@ -39,25 +39,29 @@ class PhotoController extends Controller
         return view('edit')->with('photo', $photo);
     }
     
-
     public function update(Request $request, $id)
     {
         $photo = Photos::findOrFail($id);
-
+    
         $photo->title = $request->input('title');
         $photo->description = $request->input('description');
-
-        if ($request->hasFile('imagem')) {
-        
-        Storage::delete($photo->image);
-        
+    
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $file = $request->file('image');
+            $path = $file->storePublicly('public/images');
+            $name_image = basename($path);
+    
+            Storage::delete('public/images/' . $photo->image);
+            $photo->image = $name_image;
         }
-        $path = $request->file('imagem')->store('public/photos');
-        $photo->image = $path;
+    
         $photo->save();
+    
         return redirect()->route('index');
-
     }
+    
+    
+    
 
      public function delete($id)
     {
