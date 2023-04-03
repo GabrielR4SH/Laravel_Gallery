@@ -26,7 +26,7 @@
             @foreach($photos as $photo)
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="{{ $photo->url }}" class="card-img-top" alt="{{ $photo->title }}">
+                    <img src="{{ $photo->url }}" class="img-fluid mw-100 mx-auto" alt="{{ $photo->title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ $photo->title }}</h5>
                     <p class="card-text">{{ $photo->description }}</p>
